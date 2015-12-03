@@ -1,3 +1,4 @@
+package source;
 import com.rabbitmq.client.*;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -19,7 +20,6 @@ public class Main {
         String queueName = channel.queueDeclare().getQueue();
         channel.queueBind(queueName, EXCHANGE_NAME, "");
 
-//		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 		System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
 		Consumer consumer = new DefaultConsumer(channel) {
@@ -27,20 +27,21 @@ public class Main {
 			public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties,
 					byte[] body) throws IOException {
 				String message = new String(body, "UTF-8");
-//				System.out.println(" [x] Received '" + message + "'");
 				
 				if (message.equals("left")) {
 					Sound sound = new Sound();
-					sound.play("sounds/TOR_left.wav");
+					sound.produceFeedback("left");
 					System.out.println(" [x] Left");
 					
 				} else if (message.equals("right")) {
 					Sound sound = new Sound();
-					sound.play("sounds/TOR_right.wav");
+					sound.produceFeedback("right");
 					System.out.println(" [x] Right");
 					
 				} else {
-					System.out.println(" [x] Neither left nor right");
+					Sound sound = new Sound();
+					sound.produceFeedback("omnidirectional");
+					System.out.println(" [x] Omnidirectional");
 				}
 				
 			}

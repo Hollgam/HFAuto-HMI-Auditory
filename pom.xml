@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>AuditoryHMI</groupId>
   <artifactId>AuditoryHMI</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -22,5 +22,42 @@
   		<artifactId>amqp-client</artifactId>
   		<version>3.5.6</version>
   	</dependency>
+  	<dependency>
+  		<groupId>hfauto</groupId>
+  		<artifactId>HFAuto-Desicion</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
+  <repositories>
+    <repository>
+        <id>central</id>
+        <url>http://localhost:8081/artifactory/libs-release</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+    <repository>
+        <id>snapshots</id>
+        <url>http://localhost:8081/artifactory/libs-snapshot</url>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+    </repository>
+</repositories>
+<pluginRepositories>
+    <pluginRepository>
+        <id>central</id>
+        <url>http://localhost:8081/artifactory/plugins-release</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+        <id>snapshots</id>
+        <url>http://localhost:8081/artifactory/plugins-snapshot</url>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+    </pluginRepository>
+</pluginRepositories>
 </project>
